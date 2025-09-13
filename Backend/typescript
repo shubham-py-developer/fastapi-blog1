@@ -255,4 +255,71 @@ No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-	[32mnew file:   README.md[
+	[32mnew file:   README.md[m
+	[32mnew file:   __pycache__/main.cpython-310.pyc[m
+	[32mnew file:   core/Config.py[m
+	[32mnew file:   core/__pycache__/Config.cpython-310.pyc[m
+	[32mnew file:   main.py[m
+	[32mnew file:   requirements.txt[m
+	[32mnew file:   typescript[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m../venv/[m
+
+[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ [18~[K[K[K[Kgit add.[K  .
+[?2004l[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git status
+[?2004lOn branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	[32mnew file:   README.md[m
+	[32mnew file:   __pycache__/main.cpython-310.pyc[m
+	[32mnew file:   core/Config.py[m
+	[32mnew file:   core/__pycache__/Config.cpython-310.pyc[m
+	[32mnew file:   main.py[m
+	[32mnew file:   requirements.txt[m
+	[32mnew file:   typescript[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m../venv/[m
+
+[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git commit -m "Initial commit"
+[?2004l[master (root-commit) bb3bd03] Initial commit
+ 7 files changed, 274 insertions(+)
+ create mode 100644 Backend/README.md
+ create mode 100644 Backend/__pycache__/main.cpython-310.pyc
+ create mode 100644 Backend/core/Config.py
+ create mode 100644 Backend/core/__pycache__/Config.cpython-310.pyc
+ create mode 100644 Backend/main.py
+ create mode 100644 Backend/requirements.txt
+ create mode 100644 Backend/typescript
+[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ gi[K[Kgit status
+[?2004lOn branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   requirements.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m../venv/[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ 
+[?2004l[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git push -m[K[K-u origin main
+[?2004lerror: src refspec main does not match any
+[31merror: failed to push some refs to 'origin'
+[m[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ 
+[?2004l[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git branch -M maui[K[Kin[K[K[K[K[K[K[K[K
+[?2004l[?1h=* [32mmaster[m[m
+[K[?1l>[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git branch -push -u origin main[K[K[K[Kmaster
+[?2004lfatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ [7mgit remote add origin https://github.com/shubham-py[27m[7m-[27m[7mdeveloper/fastapi-blog1.git[27m[A]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git remote add origin https://github.c
