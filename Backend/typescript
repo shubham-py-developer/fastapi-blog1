@@ -322,4 +322,41 @@ fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
-[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ [7mgit remote add origin https://github.com/shubham-py[27m[7m-[27m[7mdeveloper/fastapi-blog1.git[27m[A]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git remote add origin https://github.c
+[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ [7mgit remote add origin https://github.com/shubham-py[27m[7m-[27m[7mdeveloper/fastapi-blog1.git[27m[A]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git remote add origin https://github.com/shubham-py-developer/fastapi-blog1.git
+[?2004l[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git remote add origin https://github.com/shubham-py-developer/fastapi-blog1.git[A]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ [C[C[C[C[26Ppush -u origin master
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l
+Enumerating objects: 13, done.
+Counting objects:   7% (1/13)Counting objects:  15% (2/13)Counting objects:  23% (3/13)Counting objects:  30% (4/13)Counting objects:  38% (5/13)Counting objects:  46% (6/13)Counting objects:  53% (7/13)Counting objects:  61% (8/13)Counting objects:  69% (9/13)Counting objects:  76% (10/13)Counting objects:  84% (11/13)Counting objects:  92% (12/13)Counting objects: 100% (13/13)Counting objects: 100% (13/13), done.
+Delta compression using up to 4 threads
+Compressing objects:  11% (1/9)Compressing objects:  22% (2/9)Compressing objects:  33% (3/9)Compressing objects:  44% (4/9)Compressing objects:  55% (5/9)Compressing objects:  66% (6/9)Compressing objects:  77% (7/9)Compressing objects:  88% (8/9)Compressing objects: 100% (9/9)Compressing objects: 100% (9/9), done.
+Writing objects:   7% (1/13)Writing objects:  15% (2/13)Writing objects:  23% (3/13)Writing objects:  30% (4/13)Writing objects:  38% (5/13)Writing objects:  46% (6/13)Writing objects:  53% (7/13)Writing objects:  61% (8/13)Writing objects:  69% (9/13)Writing objects:  76% (10/13)Writing objects:  84% (11/13)Writing objects:  92% (12/13)Writing objects: 100% (13/13)Writing objects: 100% (13/13), 3.99 KiB | 583.00 KiB/s, done.
+Total 13 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/shubham-py-developer/fastapi-blog1.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ 
+[?2004l[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git stau[Ktus
+[?2004lOn branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   requirements.txt[m
+	[31mmodified:   typescript[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m../venv/[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git add .
+[?2004l[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ 
+[?2004l[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git commit -m mai[K[K[K"Update"
+[?2004l[master 2a638e6] Update
+ 2 files changed, 70 insertions(+), 1 deletion(-)
+[?2004h]0;mypc@dell: ~/Desktop/Pratice/FastApi_blog/Backend[01;32mmypc@dell[00m:[01;34m~/Desktop/Pratice/FastApi_blog/Backend[00m$ git push -u commit -m "Update"add .[Kcommit -m "Update"[10Ppush -u origin master
+[?2004l
+Enumerating objects: 9, done.
+Counting objects:  11% (1/9)Counting objects:  22% (2/9)Counting objects:  33% (3/9)Counting objects:  44% (4/9)Counting objects:  55% (5/9)Counting objects:  66% (6/9)Counting objects:  77% (7/9)Counting objects:  88% 
