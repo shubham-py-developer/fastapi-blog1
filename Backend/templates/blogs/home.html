@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>FastAPI Home | Blogs</title>
+{% endblock %}
+
+{% block content %}
+{% with alert=alert %}
+    {% include "components/alert.html" %}
+{% endwith %}
+
+<div class="container mt-5">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">🚀 FastAPI Blogs</h1>
+        <p class="text-muted">Explore latest tech & programming insights</p>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="row">
+
+        {% for blog in blogs %}
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card blog-card h-100 border-0 shadow-sm rounded-4">
+
+                <!-- Card Body -->
+                <div class="card-body d-flex flex-column">
+
+                    <!-- Title -->
+                    <h5 class="fw-bold text-dark">
+                        {{ blog.title }}
+                    </h5>
+
+                    <!-- Date -->
+                    <small class="text-muted mb-2">
+                        📅 {{ blog.created_at.strftime('%d %B %Y') }}
+                    </small>
+
+                    <!-- Content Preview -->
+                    <p class="text-secondary flex-grow-1">
+                        {{ blog.content[:140] if blog.content else "No content available" }}...
+                    </p>
+
+                    <!-- Read Button -->
+                    <a href="/app/blog/{{ blog.id }}"
+                       class="btn btn-success rounded-pill mt-auto">
+                        Read Full Blog →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- Empty state -->
+    {% if not blogs %}
+    <div class="text-center mt-5">
+        <h4>No blogs available</h4>
+        <p class="text-muted">Start writing your first blog 🚀</p>
+    </div>
+    {% endif %}
+
+</div>
+
+<!-- Styling -->
+<style>
+body{
+    background-color:#f5f7fb;
+}
+
+.blog-card{
+    transition: all 0.35s ease;
+}
+
+.blog-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.btn-success{
+    padding:8px 18px;
+    font-weight:500;
+}
+
+h1{
+    letter-spacing:0.5px;
+}
+</style>
+
+{% endblock %}

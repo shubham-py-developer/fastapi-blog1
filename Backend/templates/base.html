@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title %}
+    {% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    {% include "components/navbar.html" %}
+    {% block content %}
+    {% endblock %}
+    
+
+    <!-- Stylish Blog Intro Card (added without disturbing structure) -->
+    <div class="container mt-5">
+      <div class="card shadow-lg border-0 rounded-4 p-4" style="background: linear-gradient(135deg,#f8fffa,#e6fff2);">
+        <div class="card-body text-center">
+
+          <h1 class="text-success fw-bold mb-3">
+            🌍 Hello, FastAPI World!
+          </h1>
+
+          <p class="lead text-muted">
+            Welcome to my blog — a space where technology meets creativity.
+            Here you'll explore articles on Python, FastAPI, backend development,
+            APIs, and real-world projects designed to make you job-ready.
+          </p>
+
+          <p class="text-secondary">
+            This blog is built to help developers learn faster, build smarter,
+            and grow into professional backend engineers with practical knowledge
+            and hands-on experience.
+          </p>
+
+          <a class="btn btn-success mt-3 px-4 rounded-pill shadow-sm">
+             😊Thanks😊
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    {% block script %}
+    {% include "components/footer.html" %}
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Sign Up</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+    <!-- Page Header -->
+    <div class="text-center mb-4">
+        <h1 class="display-4 fw-bold">Create Your Account</h1>
+        <p class="text-muted">Join us and start your journey today!</p>
+    </div>
+
+    <!-- Error Messages -->
+    {% if errors %}
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm mx-auto" style="max-width:500px;">
+            <ul class="mb-0">
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    {% endif %}
+
+    <!-- Signup Form Card -->
+    <div class="signup-card mx-auto shadow-lg rounded-4 p-5" style="max-width:500px; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px);">
+
+        <form method="POST" novalidate>
+            <!-- Email Field -->
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required value="{{ email }}">
+                <label for="email">Email address</label>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-floating mb-2">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required value="">
+                <label for="password">Password</label>
+            </div>
+            <div id="passwordHelp" class="form-text mb-3">
+                Choose a strong password with letters, numbers, and symbols.
+            </div>
+
+            <!-- Password Strength Bar -->
+            <div class="progress mb-3" style="height:6px;">
+                <div class="progress-bar" id="passwordStrength" role="progressbar" style="width:0%;"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-gradient w-100 py-2 fw-bold">Create Account</button>
+
+            <div class="text-center mt-3">
+                Already have an account? <a href="/auth/login" class="text-decoration-none">Login</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- Styling -->
+<style>
+body {
+    background: linear-gradient(135deg,#f6f9fc,#eef2f7);
+    font-family: 'Poppins', sans-serif;
+}
+.signup-card { transition: all 0.3s ease; }
+.signup-card:hover { transform: translateY(-6px); box-shadow: 0 25px 60px rgba(0,0,0,0.15); }
+
+.btn-gradient {
+    background: linear-gradient(90deg,#0d6efd,#6610f2);
+    color: #fff; border: none; transition: all 0.3s ease;
+}
+.btn-gradient:hover { background: linear-gradient(90deg,#6610f2,#0d6efd); transform: scale(1.03); }
+
+.form-floating input:focus { box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25); }
+
+#passwordStrength { background: linear-gradient(90deg,#dc3545,#ffc107,#28a745); transition: width 0.3s ease; }
+
+@media(max-width:576px){ .signup-card { padding:30px 20px; } }
+</style>
+
+<!-- Password Strength JS -->
+<script>
+const passwordInput = document.getElementById('password');
+const strengthBar = document.getElementById('passwordStrength');
+passwordInput.addEventListener('input', () => {
+    const val = passwordInput.value;
+    let strength = 0;
+    if(val.length >= 6) strength += 30;
+    if(/[A-Z]/.test(val)) strength += 20;
+    if(/[0-9]/.test(val)) strength += 20;
+    if(/[\W]/.test(val)) strength += 30;
+    if(strength > 100) strength = 100;
+    strengthBar.style.width = strength + '%';
+});
+</script>
+
+<!-- Auto-clear password on error -->
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    const errorBox = document.querySelector('.alert-danger');
+    if(errorBox){
+        const pwd = document.getElementById('password');
+        if(pwd){ pwd.value = ''; }
+    }
+});
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+
+#python:covers all python py cache files
+__pycache__/
+*.pyc
+
+
+# Environment:venv/is exactly what should be ignored
+.env
+venv/ 
+
+# Database
+test_db.db 

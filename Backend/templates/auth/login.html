@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+
+<!-- Error Messages -->
+{% for error in errors %}
+<div class="container mt-3">
+    <div class="alert alert-danger text-center shadow-sm">
+        {{ error }}
+    </div>
+</div>
+{% endfor %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-6 col-lg-5">
+
+            <div class="card shadow-lg border-0 rounded-4 p-4">
+
+                <!-- Heading -->
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold text-success">🔐 Welcome Back</h2>
+                    <p class="text-muted">Login to access your dashboard</p>
+                </div>
+
+                <!-- Login Form -->
+                <form method="POST">
+
+                    <label class="fw-semibold">Email</label>
+                    <input type="email" 
+                           required  
+                           class="form-control mb-3 rounded-pill"
+                           name="email" 
+                           value="{{email}}" 
+                           placeholder="Enter your email">
+
+                    <label class="fw-semibold">Password</label>
+                    <input type="password" 
+                           required 
+                           placeholder="Enter your password" 
+                           value="{{password}}" 
+                           name="password" 
+                           class="form-control mb-3 rounded-pill">
+
+                    <!-- Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success rounded-pill fw-bold">
+                            🚀 Login
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Divider -->
+                <hr class="my-4">
+
+                <!-- Register Link -->
+                <div class="text-center">
+                    <span class="text-muted">Don't have an account?</span>
+                    <a href="/auth/register" class="text-success fw-semibold text-decoration-none">
+                        Register here
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

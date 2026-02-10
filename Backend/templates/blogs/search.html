@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h3>Search Results for "{{query}}"</h3>
+    <hr>
+
+    {% if results %}
+        {% for blog in results %}
+            <div class="card mb-3 p-3 shadow-sm">
+                <h4>{{ blog.title }}</h4>
+                <p>{{ blog.content[:200] }}...</p>
+                <a href="/app/blog/{{blog.id}}" class="btn btn-sm btn-primary">Read</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No blogs found</p>
+    {% endif %}
+</div>
+
+{% endblock %}

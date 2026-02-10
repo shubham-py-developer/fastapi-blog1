@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <img src="{{ url_for('static', path='images/fast.png') }}" 
+     alt="FastAPI" 
+     width="35" height="35" 
+     class="mx-3">
+
+    <a class="navbar-brand fw-bold text-success" href="/">FastAPI Blog</a>
+
+    <!-- Mobile toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+    data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- Left menu -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link active fw-semibold" href="/">🏠 Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/">📝 Blog</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/login">🔐 Login</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/register">🧑 Register</a>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            ⚙️ More
+          </a>
+          <ul class="dropdown-menu shadow">
+            <li><a class="dropdown-item" href="/about">About</a></li>
+            <li><a class="dropdown-item" href="/contact">Contact</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+      <!-- SEARCH BOX (Important) -->
+      <form class="d-flex" role="search" method="get" action="/search">
+        <input class="form-control me-2 rounded-pill" 
+               type="search" 
+               name="q"
+               placeholder="Search posts..." 
+               required>
+
+        <button class="btn btn-success rounded-pill px-4" type="submit">
+          🔍 Search
+        </button>
+      </form>
+
+    </div>
+  </div>
+</nav>
