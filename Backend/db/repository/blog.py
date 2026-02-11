@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from schemas.blog import CreateBlog, UpdateBlog
 from db.models.blog import Blog
 from sqlalchemy import or_, and_
+from bs4 import BeautifulSoup
 
 
 def create_new_blog(blog: CreateBlog, db: Session,author_id:int=1):
@@ -79,3 +80,6 @@ def global_search(keyword: str, db, user=None):
 
     # latest first
     return query.order_by(Blog.id.desc()).all()
+
+def html_to_text(html_content: str) -> str:
+    return BeautifulSoup(html_content, "html.parser").get_text()

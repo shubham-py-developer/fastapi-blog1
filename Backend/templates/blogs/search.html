@@ -1,21 +1,47 @@
 {% extends "base.html" %}
+
 {% block content %}
-
 <div class="container mt-4">
-    <h3>Search Results for "{{query}}"</h3>
-    <hr>
+    <h3 class="mb-3">🔍 Search Results for "{{ query }}"</h3>
 
-    {% if results %}
-        {% for blog in results %}
-            <div class="card mb-3 p-3 shadow-sm">
-                <h4>{{ blog.title }}</h4>
-                <p>{{ blog.content[:200] }}...</p>
-                <a href="/app/blog/{{blog.id}}" class="btn btn-sm btn-primary">Read</a>
+    {% if blogs|length == 0 %}
+        <div class="alert alert-warning">
+            No results found
+        </div>
+    {% else %}
+        <p class="text-muted">{{ blogs|length }} result(s) found</p>
+
+        {% for blog in blogs %}
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4>
+                        <a href="/app/blog/{{ blog.id }}" class="text-decoration-none text-dark">
+                            {{ blog.title | safe }}
+                        </a>
+                    </h4>
+
+                    <!-- Slug -->
+                    <p class="text-muted small">
+                        Slug: {{ blog.slug | safe }}
+                    </p>
+
+                    <!-- Author -->
+                    <p class="text-muted small">
+                        Author: {{ blog.author_email }}
+                    </p>
+
+                    <!-- Content -->
+                    <p class="text-secondary">
+                        {{ blog.content | safe }}
+                    </p>
+
+                    <a href="/app/blog/{{ blog.id }}" class="btn btn-sm btn-primary">
+                        Read More →
+                    </a>
+                </div>
             </div>
         {% endfor %}
-    {% else %}
-        <p>No blogs found</p>
     {% endif %}
 </div>
-
 {% endblock %}

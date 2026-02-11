@@ -19,6 +19,7 @@ FastAPI Blog application
 |  ├── 📄 config.py
 |  └── 📄 security.py
 |  └── 📄 hashing.py
+|  └── 📄 static_pages.py
 ├── 📁 db
 |  ├── 📁 repository
 |  |  ├── 📄 blog.py
@@ -51,6 +52,7 @@ FastAPI Blog application
 |   ├──📁 blogs
 |   |   └── 📄 detail.html
 |   |   └── 📄 home.html
+|   |   └── 📄 search.html
 |   ├── 📁 components
 |   |   └── 📄 navbar.html
 |   └── 📄 base.html
