@@ -76,30 +76,63 @@ def register_post(
 @router.get("/login")
 def login(request:Request):
     return templates.TemplateResponse("auth/login.html",{"request": request, "errors": [], "email": ""})
+
 # POST: Handle login
 @router.post("/login")
-def login(request:Request,
+def login(request: Request,
           email: str = Form(...),
-          password:str = Form(...),
-          db: Session = Depends(get_db)
-          ):
-    errors= []
-    user = authenticate_user(email=email,password=password, db=db)
+          password: str = Form(...),
+          db: Session = Depends(get_db)):
+
+    errors = []
+
+    user = authenticate_user(email=email, password=password, db=db)
+
     if not user:
         errors.append("Incorrect email or Password!!!")
-        return templates.TemplateResponse("auth/login.html",{"request": request, "errors": errors, "email": email})
-    access_token = create_access_token(data={"sub":email})
-# Redirect after successful login
-    response = responses.RedirectResponse(
-            "/?alert=Successfully%20Logged%20In",
-            status_code=status.HTTP_302_FOUND
+        return templates.TemplateResponse(
+            "auth/login.html",
+            {"request": request, "errors": errors, "email": email}
         )
-    #  set cookie correctly
+
+    #  CREATE TOKEN (for API use)
+    access_token = create_access_token(data={"sub": email})
+
+    #  CREATE RESPONSE
+    response = responses.RedirectResponse(
+        "/?alert=Successfully%20Logged%20In",
+        status_code=status.HTTP_302_FOUND
+    )
+
+    #  SET COOKIE (JWT)
     response.set_cookie(
         key="access_token",
-        value=access_token,   # ⚠ NO Bearer
+        value=access_token,
         httponly=True,
         samesite="lax"
     )
 
+    #  VERY IMPORTANT: SAVE SESSION FOR FRONTEND
+    request.session["user"] = email
+    request.session["is_admin"] = user.is_superuser  # or is_admin field
+    request.session["user_id"] = user.id
+
     return response
+
+
+# ---------------- LOGOUT ----------------
+@router.get("/logout")
+def logout(request: Request):
+    response = responses.RedirectResponse(
+        url="/?alert=Logged%20Out",
+        status_code=status.HTTP_302_FOUND
+    )
+
+    #  remove JWT cookie
+    response.delete_cookie("access_token")
+
+    #  clear session completely
+    request.session.clear()
+
+    return response
+

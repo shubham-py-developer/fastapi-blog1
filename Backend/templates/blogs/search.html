@@ -14,31 +14,33 @@
         {% for blog in blogs %}
             <div class="card mb-3 shadow-sm">
                 <div class="card-body">
-                    <!-- Title -->
                     <h4>
-                        <a href="/app/blog/{{ blog.id }}" class="text-decoration-none text-dark">
+                        {% if blog.id %}
+                            <a href="/app/blog/{{ blog.id }}" class="text-decoration-none text-dark">
+                                {{ blog.title | safe }}
+                            </a>
+                        {% else %}
                             {{ blog.title | safe }}
-                        </a>
+                        {% endif %}
                     </h4>
 
-                    <!-- Slug -->
                     <p class="text-muted small">
                         Slug: {{ blog.slug | safe }}
                     </p>
 
-                    <!-- Author -->
                     <p class="text-muted small">
                         Author: {{ blog.author_email }}
                     </p>
 
-                    <!-- Content -->
                     <p class="text-secondary">
                         {{ blog.content | safe }}
                     </p>
 
-                    <a href="/app/blog/{{ blog.id }}" class="btn btn-sm btn-primary">
-                        Read More →
-                    </a>
+                    {% if blog.id %}
+                        <a href="/app/blog/{{ blog.id }}" class="btn btn-sm btn-primary">
+                            Read More →
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

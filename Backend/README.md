@@ -52,6 +52,8 @@ FastAPI Blog application
 |   ├──📁 blogs
 |   |   └── 📄 detail.html
 |   |   └── 📄 home.html
+|   |   └── 📄 edit_blog.html
+|   |   └── 📄 user_blog.html
 |   |   └── 📄 search.html
 |   ├── 📁 components
 |   |   └── 📄 navbar.html

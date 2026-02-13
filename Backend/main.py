@@ -1,3 +1,4 @@
+from starlette.middleware.sessions import SessionMiddleware
 from fastapi import FastAPI
 from core.Config import Settings
 from db.session import engine
@@ -25,11 +26,18 @@ def configure_staticfiles(app):
 
 
 def start_application():
-    app = FastAPI(title=Settings.PROJECT_TITLE,version = Settings.PROJECT_VERSION)
+    app = FastAPI(title=Settings.PROJECT_TITLE, version=Settings.PROJECT_VERSION)
+
+    #  ADD SESSION MIDDLEWARE HERE
+    app.add_middleware(
+        SessionMiddleware,
+        secret_key=Settings.SECRET_KEY   # any random strong string
+    )
+
     include_router(app)
     configure_staticfiles(app)
-    #create_tables()
-    return app      
+    return app
+    
 
 
 app=start_application()

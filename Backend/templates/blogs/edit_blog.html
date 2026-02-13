@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>{{ 'Edit Blog' if blog else 'Create Blog' }} | FastAPI Blog</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">{{ 'Edit Blog' if blog else 'Create Blog' }}</h2>
+
+    <form method="post" id="blogForm">
+        <!-- Title -->
+        <div class="mb-3">
+            <label for="title" class="form-label fw-bold">Title</label>
+            <input type="text" name="title" id="title" class="form-control"
+                   value="{{ blog.title if blog else '' }}" required>
+        </div>
+
+        <!-- Toolbar -->
+        <div id="editor-toolbar" class="mb-2"></div>
+
+        <!-- Content -->
+        <div class="mb-3">
+            <label class="form-label fw-bold">Content</label>
+            <div id="editor">{{ blog.content | safe if blog else '' }}</div>
+            <input type="hidden" name="content" id="contentInput">
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            💾 {{ 'Update Blog' if blog else 'Publish Blog' }}
+        </button>
+        <a href="/user/blogs" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<!-- CKEditor 5 Decoupled -->
+<script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/decoupled-document/ckeditor.js"></script>
+<script>
+let editorInstance;
+DecoupledEditor
+    .create(document.querySelector('#editor'), {
+        toolbar: [
+            'heading', '|',
+            'bold', 'italic', 'underline', 'strikethrough', 'link', '|',
+            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+            'alignment', '|',
+            'bulletedList', 'numberedList', 'outdent', 'indent', '|',
+            'blockQuote', 'insertTable', 'imageUpload', 'mediaEmbed', '|',
+            'undo', 'redo'
+        ],
+        image: {
+            toolbar: [
+                'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
+            ]
+        },
+        table: {
+            contentToolbar: [
+                'tableColumn', 'tableRow', 'mergeTableCells'
+            ]
+        }
+    })
+    .then(editor => {
+        editorInstance = editor;
+        const toolbarContainer = document.querySelector('#editor-toolbar');
+        toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+
+        // Automatically copy editor data to hidden input on change
+        editor.model.document.on('change:data', () => {
+            document.getElementById('contentInput').value = editor.getData();
+        });
+    })
+    .catch(error => console.error(error));
+
+document.getElementById('blogForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    Swal.fire({
+        title: '{{ "Update Blog?" if blog else "Publish Blog?" }}',
+        text: '{{ "Are you sure you want to update this blog?" if blog else "Are you sure you want to publish this blog?" }}',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#0d6efd',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: '{{ "Yes, update it!" if blog else "Yes, publish it!" }}'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Submit form (content already synced)
+            this.submit();
+        }
+    });
+});
+</script>
+
+<!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Optional Styling -->
+<style>
+body{
+    background: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    max-width: 900px;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+#editor{
+    min-height: 250px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    background: white;
+}
+#editor:focus{
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13,110,253,0.5);
+}
+/* CKEditor alignment support for preview */
+.ck-content .ck-align-left { text-align: left; }
+.ck-content .ck-align-center { text-align: center; }
+.ck-content .ck-align-right { text-align: right; }
+.ck-content .ck-align-justify { text-align: justify; }
+</style>
+{% endblock %}
